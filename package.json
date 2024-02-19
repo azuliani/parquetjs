@@ -83,11 +83,5 @@
   },
   "engines": {
     "node": ">=18.18.2"
-  },
-  "files": [
-    "dist/**/*",
-    "parquet.thrift",
-    "*.md",
-    "docs/**/*"
-  ]
+  }
 }
