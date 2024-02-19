@@ -124,7 +124,7 @@ class ParquetCursor {
 
   async seekNextRowgroup() {
     if (this.rowGroupIndex >= this.metadata.row_groups.length) {
-      return null;
+      return false;
     }
 
     let rowBuffer = await this.envelopeReader.readRowGroup(
@@ -135,11 +135,12 @@ class ParquetCursor {
     this.rowGroup = parquet_shredder.materializeRecords(this.schema, rowBuffer);
     this.rowGroupIndex++;
     this.cursorIndex = 0;
+    return true;
   }
 
   async seekRowgroup(index) {
     if (index >= this.metadata.row_groups.length) {
-      return null;
+      return false;
     }
 
     let rowBuffer = await this.envelopeReader.readRowGroup(
@@ -150,6 +151,8 @@ class ParquetCursor {
     this.rowGroup = parquet_shredder.materializeRecords(this.schema, rowBuffer);
     this.rowGroupIndex = index+1;
     this.cursorIndex = 0;
+
+    return true;
   }
 
   /**
