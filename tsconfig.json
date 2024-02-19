@@ -12,7 +12,7 @@
     "sourceMap": false,
     "strict": true,
     "target": "ESNext",
-    "watch": false,
+    //"watch": false,
     "typeRoots": [
       "node_modules/@types",
       "gen-nodejs",
