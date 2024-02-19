@@ -138,7 +138,7 @@ class ParquetCursor {
     return true;
   }
 
-  async seekRowgroup(index) {
+  async seekRowgroup(index: number) {
     if (index >= this.metadata.row_groups.length) {
       return false;
     }
