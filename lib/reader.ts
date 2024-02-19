@@ -82,7 +82,6 @@ class ParquetCursor {
     this.cursorIndex = 0;
   }
 
-
   /**
    * Retrieve the next row from the cursor. Returns a row or NULL if the end
    * of the file was reached
@@ -90,7 +89,6 @@ class ParquetCursor {
   async next() {
     if (this.cursorIndex >= this.rowGroup.length) {
       if (this.rowGroupIndex >= this.metadata.row_groups.length) {
-
         return null;
       }
 
@@ -103,8 +101,55 @@ class ParquetCursor {
       this.rowGroupIndex++;
       this.cursorIndex = 0;
     }
-
     return this.rowGroup[this.cursorIndex++];
+  }
+
+  async peek() {
+    if (this.cursorIndex >= this.rowGroup.length) {
+      if (this.rowGroupIndex >= this.metadata.row_groups.length) {
+        return null;
+      }
+
+      let rowBuffer = await this.envelopeReader.readRowGroup(
+          this.schema,
+          this.metadata.row_groups[this.rowGroupIndex],
+          this.columnList);
+
+      this.rowGroup = parquet_shredder.materializeRecords(this.schema, rowBuffer);
+      this.rowGroupIndex++;
+      this.cursorIndex = 0;
+    }
+    return this.rowGroup[this.cursorIndex];
+  }
+
+  async seekNextRowgroup() {
+    if (this.rowGroupIndex >= this.metadata.row_groups.length) {
+      return null;
+    }
+
+    let rowBuffer = await this.envelopeReader.readRowGroup(
+        this.schema,
+        this.metadata.row_groups[this.rowGroupIndex],
+        this.columnList);
+
+    this.rowGroup = parquet_shredder.materializeRecords(this.schema, rowBuffer);
+    this.rowGroupIndex++;
+    this.cursorIndex = 0;
+  }
+
+  async seekRowgroup(index) {
+    if (index >= this.metadata.row_groups.length) {
+      return null;
+    }
+
+    let rowBuffer = await this.envelopeReader.readRowGroup(
+        this.schema,
+        this.metadata.row_groups[index],
+        this.columnList);
+
+    this.rowGroup = parquet_shredder.materializeRecords(this.schema, rowBuffer);
+    this.rowGroupIndex = index+1;
+    this.cursorIndex = 0;
   }
 
   /**
