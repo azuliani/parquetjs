@@ -135,6 +135,34 @@
           }
         }
       }
+    },
+    "time_field": {
+      "optional": true,
+      "type": "INT32",
+      "logicalType": {
+        "STRING": null,
+        "MAP": null,
+        "LIST": null,
+        "ENUM": null,
+        "DECIMAL": null,
+        "DATE": null,
+        "TIME": {
+          "isAdjustedToUTC": false,
+          "unit": {
+            "MILLIS": {},
+            "MICROS": null,
+            "NANOS": null
+          }
+        },
+        "TIMESTAMP": null,
+        "INTEGER": null,
+        "UNKNOWN": null,
+        "JSON": null,
+        "BSON": null,
+        "UUID": null
+      },
+      "encoding": "PLAIN",
+      "compression": "UNCOMPRESSED"
     }
   },
   "fields": {
@@ -142,9 +170,7 @@
       "name": "string_field",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "string_field"
-      ],
+      "path": ["string_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -154,9 +180,7 @@
     "int_field": {
       "name": "int_field",
       "primitiveType": "INT64",
-      "path": [
-        "int_field"
-      ],
+      "path": ["int_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -166,9 +190,7 @@
     "number_field": {
       "name": "number_field",
       "primitiveType": "DOUBLE",
-      "path": [
-        "number_field"
-      ],
+      "path": ["number_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -177,9 +199,7 @@
     },
     "array_field": {
       "name": "array_field",
-      "path": [
-        "array_field"
-      ],
+      "path": ["array_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -188,10 +208,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "array_field",
-            "list"
-          ],
+          "path": ["array_field", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -202,11 +219,7 @@
               "name": "element",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "array_field",
-                "list",
-                "element"
-              ],
+              "path": ["array_field", "list", "element"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -220,9 +233,7 @@
     },
     "timestamp_array_field": {
       "name": "timestamp_array_field",
-      "path": [
-        "timestamp_array_field"
-      ],
+      "path": ["timestamp_array_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -231,10 +242,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "timestamp_array_field",
-            "list"
-          ],
+          "path": ["timestamp_array_field", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -245,11 +253,7 @@
               "name": "element",
               "primitiveType": "INT64",
               "originalType": "TIMESTAMP_MILLIS",
-              "path": [
-                "timestamp_array_field",
-                "list",
-                "element"
-              ],
+              "path": ["timestamp_array_field", "list", "element"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -265,9 +269,7 @@
       "name": "timestamp_field",
       "primitiveType": "INT64",
       "originalType": "TIMESTAMP_MILLIS",
-      "path": [
-        "timestamp_field"
-      ],
+      "path": ["timestamp_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -276,9 +278,7 @@
     },
     "obj_field": {
       "name": "obj_field",
-      "path": [
-        "obj_field"
-      ],
+      "path": ["obj_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -289,10 +289,7 @@
           "name": "sub1",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "obj_field",
-            "sub1"
-          ],
+          "path": ["obj_field", "sub1"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -303,10 +300,7 @@
           "name": "sub2",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "obj_field",
-            "sub2"
-          ],
+          "path": ["obj_field", "sub2"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -317,9 +311,7 @@
     },
     "struct_field": {
       "name": "struct_field",
-      "path": [
-        "struct_field"
-      ],
+      "path": ["struct_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -328,10 +320,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "struct_field",
-            "list"
-          ],
+          "path": ["struct_field", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -340,11 +329,7 @@
           "fields": {
             "element": {
               "name": "element",
-              "path": [
-                "struct_field",
-                "list",
-                "element"
-              ],
+              "path": ["struct_field", "list", "element"],
               "repetitionType": "REQUIRED",
               "rLevelMax": 1,
               "dLevelMax": 2,
@@ -355,12 +340,7 @@
                   "name": "sub3",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub3"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub3"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -371,12 +351,7 @@
                   "name": "sub4",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub4"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub4"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -385,12 +360,7 @@
                 },
                 "sub5": {
                   "name": "sub5",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub5"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub5"],
                   "repetitionType": "OPTIONAL",
                   "rLevelMax": 1,
                   "dLevelMax": 3,
@@ -401,13 +371,7 @@
                       "name": "sub6",
                       "primitiveType": "BYTE_ARRAY",
                       "originalType": "UTF8",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub5",
-                        "sub6"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub5", "sub6"],
                       "repetitionType": "OPTIONAL",
                       "encoding": "PLAIN",
                       "compression": "UNCOMPRESSED",
@@ -418,13 +382,7 @@
                       "name": "sub7",
                       "primitiveType": "BYTE_ARRAY",
                       "originalType": "UTF8",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub5",
-                        "sub7"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub5", "sub7"],
                       "repetitionType": "OPTIONAL",
                       "encoding": "PLAIN",
                       "compression": "UNCOMPRESSED",
@@ -435,12 +393,7 @@
                 },
                 "sub8": {
                   "name": "sub8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub8"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub8"],
                   "repetitionType": "OPTIONAL",
                   "rLevelMax": 1,
                   "dLevelMax": 3,
@@ -449,13 +402,7 @@
                   "fields": {
                     "list": {
                       "name": "list",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub8",
-                        "list"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub8", "list"],
                       "repetitionType": "REPEATED",
                       "rLevelMax": 2,
                       "dLevelMax": 4,
@@ -466,14 +413,7 @@
                           "name": "element",
                           "primitiveType": "BYTE_ARRAY",
                           "originalType": "UTF8",
-                          "path": [
-                            "struct_field",
-                            "list",
-                            "element",
-                            "sub8",
-                            "list",
-                            "element"
-                          ],
+                          "path": ["struct_field", "list", "element", "sub8", "list", "element"],
                           "repetitionType": "OPTIONAL",
                           "encoding": "PLAIN",
                           "compression": "UNCOMPRESSED",
@@ -491,6 +431,39 @@
         }
       },
       "originalType": "LIST"
+    },
+    "time_field": {
+      "name": "time_field",
+      "primitiveType": "INT32",
+      "originalType": "TIME_MILLIS",
+      "logicalType": {
+        "STRING": null,
+        "MAP": null,
+        "LIST": null,
+        "ENUM": null,
+        "DECIMAL": null,
+        "DATE": null,
+        "TIME": {
+          "isAdjustedToUTC": false,
+          "unit": {
+            "MILLIS": {},
+            "MICROS": null,
+            "NANOS": null
+          }
+        },
+        "TIMESTAMP": null,
+        "INTEGER": null,
+        "UNKNOWN": null,
+        "JSON": null,
+        "BSON": null,
+        "UUID": null
+      },
+      "path": ["time_field"],
+      "repetitionType": "OPTIONAL",
+      "encoding": "PLAIN",
+      "compression": "UNCOMPRESSED",
+      "rLevelMax": 0,
+      "dLevelMax": 1
     }
   },
   "fieldList": [
@@ -498,9 +471,7 @@
       "name": "string_field",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "string_field"
-      ],
+      "path": ["string_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -510,9 +481,7 @@
     {
       "name": "int_field",
       "primitiveType": "INT64",
-      "path": [
-        "int_field"
-      ],
+      "path": ["int_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -522,9 +491,7 @@
     {
       "name": "number_field",
       "primitiveType": "DOUBLE",
-      "path": [
-        "number_field"
-      ],
+      "path": ["number_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -533,9 +500,7 @@
     },
     {
       "name": "array_field",
-      "path": [
-        "array_field"
-      ],
+      "path": ["array_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -544,10 +509,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "array_field",
-            "list"
-          ],
+          "path": ["array_field", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -558,11 +520,7 @@
               "name": "element",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "array_field",
-                "list",
-                "element"
-              ],
+              "path": ["array_field", "list", "element"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -576,10 +534,7 @@
     },
     {
       "name": "list",
-      "path": [
-        "array_field",
-        "list"
-      ],
+      "path": ["array_field", "list"],
       "repetitionType": "REPEATED",
       "rLevelMax": 1,
       "dLevelMax": 2,
@@ -590,11 +545,7 @@
           "name": "element",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "array_field",
-            "list",
-            "element"
-          ],
+          "path": ["array_field", "list", "element"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -607,11 +558,7 @@
       "name": "element",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "array_field",
-        "list",
-        "element"
-      ],
+      "path": ["array_field", "list", "element"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -620,9 +567,7 @@
     },
     {
       "name": "timestamp_array_field",
-      "path": [
-        "timestamp_array_field"
-      ],
+      "path": ["timestamp_array_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -631,10 +576,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "timestamp_array_field",
-            "list"
-          ],
+          "path": ["timestamp_array_field", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -645,11 +587,7 @@
               "name": "element",
               "primitiveType": "INT64",
               "originalType": "TIMESTAMP_MILLIS",
-              "path": [
-                "timestamp_array_field",
-                "list",
-                "element"
-              ],
+              "path": ["timestamp_array_field", "list", "element"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -663,10 +601,7 @@
     },
     {
       "name": "list",
-      "path": [
-        "timestamp_array_field",
-        "list"
-      ],
+      "path": ["timestamp_array_field", "list"],
       "repetitionType": "REPEATED",
       "rLevelMax": 1,
       "dLevelMax": 2,
@@ -677,11 +612,7 @@
           "name": "element",
           "primitiveType": "INT64",
           "originalType": "TIMESTAMP_MILLIS",
-          "path": [
-            "timestamp_array_field",
-            "list",
-            "element"
-          ],
+          "path": ["timestamp_array_field", "list", "element"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -694,11 +625,7 @@
       "name": "element",
       "primitiveType": "INT64",
       "originalType": "TIMESTAMP_MILLIS",
-      "path": [
-        "timestamp_array_field",
-        "list",
-        "element"
-      ],
+      "path": ["timestamp_array_field", "list", "element"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -709,9 +636,7 @@
       "name": "timestamp_field",
       "primitiveType": "INT64",
       "originalType": "TIMESTAMP_MILLIS",
-      "path": [
-        "timestamp_field"
-      ],
+      "path": ["timestamp_field"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -720,9 +645,7 @@
     },
     {
       "name": "obj_field",
-      "path": [
-        "obj_field"
-      ],
+      "path": ["obj_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -733,10 +656,7 @@
           "name": "sub1",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "obj_field",
-            "sub1"
-          ],
+          "path": ["obj_field", "sub1"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -747,10 +667,7 @@
           "name": "sub2",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "obj_field",
-            "sub2"
-          ],
+          "path": ["obj_field", "sub2"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -763,10 +680,7 @@
       "name": "sub1",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "obj_field",
-        "sub1"
-      ],
+      "path": ["obj_field", "sub1"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -777,10 +691,7 @@
       "name": "sub2",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "obj_field",
-        "sub2"
-      ],
+      "path": ["obj_field", "sub2"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -789,9 +700,7 @@
     },
     {
       "name": "struct_field",
-      "path": [
-        "struct_field"
-      ],
+      "path": ["struct_field"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 0,
       "dLevelMax": 1,
@@ -800,10 +709,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "struct_field",
-            "list"
-          ],
+          "path": ["struct_field", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -812,11 +718,7 @@
           "fields": {
             "element": {
               "name": "element",
-              "path": [
-                "struct_field",
-                "list",
-                "element"
-              ],
+              "path": ["struct_field", "list", "element"],
               "repetitionType": "REQUIRED",
               "rLevelMax": 1,
               "dLevelMax": 2,
@@ -827,12 +729,7 @@
                   "name": "sub3",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub3"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub3"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -843,12 +740,7 @@
                   "name": "sub4",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub4"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub4"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -857,12 +749,7 @@
                 },
                 "sub5": {
                   "name": "sub5",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub5"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub5"],
                   "repetitionType": "OPTIONAL",
                   "rLevelMax": 1,
                   "dLevelMax": 3,
@@ -873,13 +760,7 @@
                       "name": "sub6",
                       "primitiveType": "BYTE_ARRAY",
                       "originalType": "UTF8",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub5",
-                        "sub6"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub5", "sub6"],
                       "repetitionType": "OPTIONAL",
                       "encoding": "PLAIN",
                       "compression": "UNCOMPRESSED",
@@ -890,13 +771,7 @@
                       "name": "sub7",
                       "primitiveType": "BYTE_ARRAY",
                       "originalType": "UTF8",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub5",
-                        "sub7"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub5", "sub7"],
                       "repetitionType": "OPTIONAL",
                       "encoding": "PLAIN",
                       "compression": "UNCOMPRESSED",
@@ -907,12 +782,7 @@
                 },
                 "sub8": {
                   "name": "sub8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub8"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub8"],
                   "repetitionType": "OPTIONAL",
                   "rLevelMax": 1,
                   "dLevelMax": 3,
@@ -921,13 +791,7 @@
                   "fields": {
                     "list": {
                       "name": "list",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub8",
-                        "list"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub8", "list"],
                       "repetitionType": "REPEATED",
                       "rLevelMax": 2,
                       "dLevelMax": 4,
@@ -938,14 +802,7 @@
                           "name": "element",
                           "primitiveType": "BYTE_ARRAY",
                           "originalType": "UTF8",
-                          "path": [
-                            "struct_field",
-                            "list",
-                            "element",
-                            "sub8",
-                            "list",
-                            "element"
-                          ],
+                          "path": ["struct_field", "list", "element", "sub8", "list", "element"],
                           "repetitionType": "OPTIONAL",
                           "encoding": "PLAIN",
                           "compression": "UNCOMPRESSED",
@@ -966,10 +823,7 @@
     },
     {
       "name": "list",
-      "path": [
-        "struct_field",
-        "list"
-      ],
+      "path": ["struct_field", "list"],
       "repetitionType": "REPEATED",
       "rLevelMax": 1,
       "dLevelMax": 2,
@@ -978,11 +832,7 @@
       "fields": {
         "element": {
           "name": "element",
-          "path": [
-            "struct_field",
-            "list",
-            "element"
-          ],
+          "path": ["struct_field", "list", "element"],
           "repetitionType": "REQUIRED",
           "rLevelMax": 1,
           "dLevelMax": 2,
@@ -993,12 +843,7 @@
               "name": "sub3",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub3"
-              ],
+              "path": ["struct_field", "list", "element", "sub3"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -1009,12 +854,7 @@
               "name": "sub4",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub4"
-              ],
+              "path": ["struct_field", "list", "element", "sub4"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -1023,12 +863,7 @@
             },
             "sub5": {
               "name": "sub5",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub5"
-              ],
+              "path": ["struct_field", "list", "element", "sub5"],
               "repetitionType": "OPTIONAL",
               "rLevelMax": 1,
               "dLevelMax": 3,
@@ -1039,13 +874,7 @@
                   "name": "sub6",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub5",
-                    "sub6"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub5", "sub6"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -1056,13 +885,7 @@
                   "name": "sub7",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub5",
-                    "sub7"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub5", "sub7"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -1073,12 +896,7 @@
             },
             "sub8": {
               "name": "sub8",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub8"
-              ],
+              "path": ["struct_field", "list", "element", "sub8"],
               "repetitionType": "OPTIONAL",
               "rLevelMax": 1,
               "dLevelMax": 3,
@@ -1087,13 +905,7 @@
               "fields": {
                 "list": {
                   "name": "list",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub8",
-                    "list"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub8", "list"],
                   "repetitionType": "REPEATED",
                   "rLevelMax": 2,
                   "dLevelMax": 4,
@@ -1104,14 +916,7 @@
                       "name": "element",
                       "primitiveType": "BYTE_ARRAY",
                       "originalType": "UTF8",
-                      "path": [
-                        "struct_field",
-                        "list",
-                        "element",
-                        "sub8",
-                        "list",
-                        "element"
-                      ],
+                      "path": ["struct_field", "list", "element", "sub8", "list", "element"],
                       "repetitionType": "OPTIONAL",
                       "encoding": "PLAIN",
                       "compression": "UNCOMPRESSED",
@@ -1129,11 +934,7 @@
     },
     {
       "name": "element",
-      "path": [
-        "struct_field",
-        "list",
-        "element"
-      ],
+      "path": ["struct_field", "list", "element"],
       "repetitionType": "REQUIRED",
       "rLevelMax": 1,
       "dLevelMax": 2,
@@ -1144,12 +945,7 @@
           "name": "sub3",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub3"
-          ],
+          "path": ["struct_field", "list", "element", "sub3"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -1160,12 +956,7 @@
           "name": "sub4",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub4"
-          ],
+          "path": ["struct_field", "list", "element", "sub4"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -1174,12 +965,7 @@
         },
         "sub5": {
           "name": "sub5",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub5"
-          ],
+          "path": ["struct_field", "list", "element", "sub5"],
           "repetitionType": "OPTIONAL",
           "rLevelMax": 1,
           "dLevelMax": 3,
@@ -1190,13 +976,7 @@
               "name": "sub6",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub5",
-                "sub6"
-              ],
+              "path": ["struct_field", "list", "element", "sub5", "sub6"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -1207,13 +987,7 @@
               "name": "sub7",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub5",
-                "sub7"
-              ],
+              "path": ["struct_field", "list", "element", "sub5", "sub7"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -1224,12 +998,7 @@
         },
         "sub8": {
           "name": "sub8",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub8"
-          ],
+          "path": ["struct_field", "list", "element", "sub8"],
           "repetitionType": "OPTIONAL",
           "rLevelMax": 1,
           "dLevelMax": 3,
@@ -1238,13 +1007,7 @@
           "fields": {
             "list": {
               "name": "list",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub8",
-                "list"
-              ],
+              "path": ["struct_field", "list", "element", "sub8", "list"],
               "repetitionType": "REPEATED",
               "rLevelMax": 2,
               "dLevelMax": 4,
@@ -1255,14 +1018,7 @@
                   "name": "element",
                   "primitiveType": "BYTE_ARRAY",
                   "originalType": "UTF8",
-                  "path": [
-                    "struct_field",
-                    "list",
-                    "element",
-                    "sub8",
-                    "list",
-                    "element"
-                  ],
+                  "path": ["struct_field", "list", "element", "sub8", "list", "element"],
                   "repetitionType": "OPTIONAL",
                   "encoding": "PLAIN",
                   "compression": "UNCOMPRESSED",
@@ -1280,12 +1036,7 @@
       "name": "sub3",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub3"
-      ],
+      "path": ["struct_field", "list", "element", "sub3"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -1296,12 +1047,7 @@
       "name": "sub4",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub4"
-      ],
+      "path": ["struct_field", "list", "element", "sub4"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -1310,12 +1056,7 @@
     },
     {
       "name": "sub5",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub5"
-      ],
+      "path": ["struct_field", "list", "element", "sub5"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 1,
       "dLevelMax": 3,
@@ -1326,13 +1067,7 @@
           "name": "sub6",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub5",
-            "sub6"
-          ],
+          "path": ["struct_field", "list", "element", "sub5", "sub6"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -1343,13 +1078,7 @@
           "name": "sub7",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub5",
-            "sub7"
-          ],
+          "path": ["struct_field", "list", "element", "sub5", "sub7"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -1362,13 +1091,7 @@
       "name": "sub6",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub5",
-        "sub6"
-      ],
+      "path": ["struct_field", "list", "element", "sub5", "sub6"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -1379,13 +1102,7 @@
       "name": "sub7",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub5",
-        "sub7"
-      ],
+      "path": ["struct_field", "list", "element", "sub5", "sub7"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
@@ -1394,12 +1111,7 @@
     },
     {
       "name": "sub8",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub8"
-      ],
+      "path": ["struct_field", "list", "element", "sub8"],
       "repetitionType": "OPTIONAL",
       "rLevelMax": 1,
       "dLevelMax": 3,
@@ -1408,13 +1120,7 @@
       "fields": {
         "list": {
           "name": "list",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub8",
-            "list"
-          ],
+          "path": ["struct_field", "list", "element", "sub8", "list"],
           "repetitionType": "REPEATED",
           "rLevelMax": 2,
           "dLevelMax": 4,
@@ -1425,14 +1131,7 @@
               "name": "element",
               "primitiveType": "BYTE_ARRAY",
               "originalType": "UTF8",
-              "path": [
-                "struct_field",
-                "list",
-                "element",
-                "sub8",
-                "list",
-                "element"
-              ],
+              "path": ["struct_field", "list", "element", "sub8", "list", "element"],
               "repetitionType": "OPTIONAL",
               "encoding": "PLAIN",
               "compression": "UNCOMPRESSED",
@@ -1446,13 +1145,7 @@
     },
     {
       "name": "list",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub8",
-        "list"
-      ],
+      "path": ["struct_field", "list", "element", "sub8", "list"],
       "repetitionType": "REPEATED",
       "rLevelMax": 2,
       "dLevelMax": 4,
@@ -1463,14 +1156,7 @@
           "name": "element",
           "primitiveType": "BYTE_ARRAY",
           "originalType": "UTF8",
-          "path": [
-            "struct_field",
-            "list",
-            "element",
-            "sub8",
-            "list",
-            "element"
-          ],
+          "path": ["struct_field", "list", "element", "sub8", "list", "element"],
           "repetitionType": "OPTIONAL",
           "encoding": "PLAIN",
           "compression": "UNCOMPRESSED",
@@ -1483,19 +1169,45 @@
       "name": "element",
       "primitiveType": "BYTE_ARRAY",
       "originalType": "UTF8",
-      "path": [
-        "struct_field",
-        "list",
-        "element",
-        "sub8",
-        "list",
-        "element"
-      ],
+      "path": ["struct_field", "list", "element", "sub8", "list", "element"],
       "repetitionType": "OPTIONAL",
       "encoding": "PLAIN",
       "compression": "UNCOMPRESSED",
       "rLevelMax": 2,
       "dLevelMax": 5
+    },
+    {
+      "name": "time_field",
+      "primitiveType": "INT32",
+      "originalType": "TIME_MILLIS",
+      "logicalType": {
+        "STRING": null,
+        "MAP": null,
+        "LIST": null,
+        "ENUM": null,
+        "DECIMAL": null,
+        "DATE": null,
+        "TIME": {
+          "isAdjustedToUTC": false,
+          "unit": {
+            "MILLIS": {},
+            "MICROS": null,
+            "NANOS": null
+          }
+        },
+        "TIMESTAMP": null,
+        "INTEGER": null,
+        "UNKNOWN": null,
+        "JSON": null,
+        "BSON": null,
+        "UUID": null
+      },
+      "path": ["time_field"],
+      "repetitionType": "OPTIONAL",
+      "encoding": "PLAIN",
+      "compression": "UNCOMPRESSED",
+      "rLevelMax": 0,
+      "dLevelMax": 1
     }
   ]
 }

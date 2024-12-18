@@ -1,36 +1,33 @@
-import zlib from 'zlib'
-import snappy from 'snappyjs'
-import { compress as brotliCompress, decompress as brotliDecompress } from 'wasm-brotli'
+// NOTICE: This is the NodeJS implementation.
+// The browser implementation is ./browser/compression.ts
+import zlib from 'zlib';
+import snappy from 'snappyjs';
 
-type d_identity = (value: ArrayBuffer | Buffer | Uint8Array ) => ArrayBuffer | Buffer | Uint8Array
-type d_gzip = (value: ArrayBuffer | Buffer | string ) => Buffer
-type d_snappy = (value: ArrayBuffer | Buffer | Uint8Array ) => ArrayBuffer | Buffer | Uint8Array
-type d_brotli = (value: Uint8Array ) => Promise<Buffer>
-
-interface PARQUET_COMPRESSION_METHODS {
-  [key:string]: {
-    deflate: (value: any) => Buffer | Promise<Buffer>
-    inflate: (value: any) => Buffer | Promise<Buffer>
+type PARQUET_COMPRESSION_METHODS = Record<
+  string,
+  {
+    deflate: (value: any) => Buffer | Promise<Buffer>;
+    inflate: (value: any) => Buffer | Promise<Buffer>;
   }
-}
+>;
 // LZO compression is disabled. See: https://github.com/LibertyDSNP/parquetjs/issues/18
 export const PARQUET_COMPRESSION_METHODS: PARQUET_COMPRESSION_METHODS = {
-  'UNCOMPRESSED': {
+  UNCOMPRESSED: {
     deflate: deflate_identity,
-    inflate: inflate_identity
+    inflate: inflate_identity,
   },
-  'GZIP': {
+  GZIP: {
     deflate: deflate_gzip,
-    inflate: inflate_gzip
+    inflate: inflate_gzip,
   },
-  'SNAPPY': {
+  SNAPPY: {
     deflate: deflate_snappy,
-    inflate: inflate_snappy
+    inflate: inflate_snappy,
   },
-  'BROTLI': {
+  BROTLI: {
     deflate: deflate_brotli,
-    inflate: inflate_brotli
-  }
+    inflate: inflate_brotli,
+  },
 };
 
 /**
@@ -58,14 +55,7 @@ function deflate_snappy(value: ArrayBuffer | Buffer | Uint8Array) {
 }
 
 async function deflate_brotli(value: Uint8Array) {
-  const compressedContent =  await brotliCompress(value/*, {
-    mode: 0,
-    quality: 8,
-    lgwin: 22
-  }
-  */)
-  
-  return Buffer.from(compressedContent);
+  return zlib.brotliCompressSync(value);
 }
 
 /**
@@ -93,8 +83,7 @@ function inflate_snappy(value: ArrayBuffer | Buffer | Uint8Array) {
 }
 
 async function inflate_brotli(value: Uint8Array) {
-  const uncompressedContent = await brotliDecompress(value)
-  return Buffer.from(uncompressedContent);
+  return zlib.brotliDecompressSync(value);
 }
 
 function buffer_from_result(result: ArrayBuffer | Buffer | Uint8Array): Buffer {
